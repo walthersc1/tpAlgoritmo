@@ -29,6 +29,7 @@ app.add_middleware(
 class TextInput(BaseModel):
     text: str
 
+@app.options("/{rest_of_path:path}")
 @app.post("/predict/")
 def predict(input_data: TextInput):
     # Transformar los datos de entrada usando el vectorizador
