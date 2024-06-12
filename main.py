@@ -14,7 +14,7 @@ app = FastAPI()
 # Configurar CORS
 origins = [
     "http://localhost:3000",  # Origen de desarrollo local
-    "https://proyecto-tp.vercel.app",  # Reemplaza con tu dominio de Vercel
+    "https://your-vercel-domain.vercel.app",  # Reemplaza con tu dominio de Vercel
     # Añade otros orígenes permitidos aquí
 ]
 
