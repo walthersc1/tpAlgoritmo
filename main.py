@@ -12,14 +12,19 @@ vectorizer = joblib.load('vectorizer.pkl')
 app = FastAPI()
 
 # Configurar CORS
+origins = [
+    "http://localhost:3000",  # Origen de desarrollo local
+    "https://your-vercel-domain.vercel.app",  # Reemplaza con tu dominio de Vercel
+    # Añade otros orígenes permitidos aquí
+]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000"],  # Permitir solicitudes solo desde el frontend
+    allow_origins=origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
 # Definir el modelo de datos para la entrada
 class TextInput(BaseModel):
     text: str
