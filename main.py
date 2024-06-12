@@ -23,16 +23,16 @@ app.add_middleware(
     allow_origins=["*"],  # Permite acceso desde cualquier origen
     allow_credentials=True,
     allow_methods=["*"],
-    allow_headers=["*"],
+    allow_headers=["*"]
 )
 # Definir el modelo de datos para la entrada
 class TextInput(BaseModel):
     text: str
-
+"""
 @app.options("/{rest_of_path:path}")
 async def preflight_check():
     return {"message": "This is a preflight response"}
-
+"""
 
 @app.post("/predict/")
 def predict(input_data: TextInput):
