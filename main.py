@@ -30,6 +30,10 @@ class TextInput(BaseModel):
     text: str
 
 @app.options("/{rest_of_path:path}")
+async def preflight_check():
+    return {"message": "This is a preflight response"}
+
+
 @app.post("/predict/")
 def predict(input_data: TextInput):
     # Transformar los datos de entrada usando el vectorizador
