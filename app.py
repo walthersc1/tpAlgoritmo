@@ -47,5 +47,8 @@ class TextInput(BaseModel):
 @app.get("/predict/")
 def predict(text: str):
  
+    model = joblib.load('model.pkl')
+    vectorizer = joblib.load('vectorizer.pkl')
+    
     return {text}
 
