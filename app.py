@@ -54,5 +54,5 @@ def predict(text: str):
     # Realizar predicciones usando el modelo cargado
     prediction = model.predict(transformed_data)
     # Retornar la predicción como respuesta
-    return {prediction}
+    return {text}
 
