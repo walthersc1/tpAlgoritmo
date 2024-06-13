@@ -1,4 +1,4 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Query
 from pydantic import BaseModel
 import joblib
 from fastapi.middleware.cors import CORSMiddleware
@@ -32,9 +32,10 @@ app.add_middleware(
 class TextInput(BaseModel):
     text: str
 
-@app.get("/predict/")  # Ejemplo de ruta POST
-def predict(input_data: TextInput):
-    # Lógica de tu función predict aquí
+
+@app.get("/predict/")
+def predict(text: str = Query(...)):
+    # Aquí puedes procesar el texto recibido
     return {"prediction": "dummy prediction"}
 
 """
