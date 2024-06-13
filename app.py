@@ -39,7 +39,7 @@ def ga():
     return {"mapri"}
 
 @app.post("/predict/")
-def predict(input_data: TextInput):
+def predict(input_data: str):
     # Aquí deberías procesar input_data.text según tus necesidades
     return {"message": f"Received text: {input_data.text}"}
 
