@@ -25,7 +25,7 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
     allow_credentials=True,
-     allow_methods=["GET", "POST", "PUT", "DELETE"],
+    allow_methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allow_headers=["*"],
 )
 # Definir el modelo de datos para la entrada
@@ -33,19 +33,16 @@ class TextInput(BaseModel):
     text: str
 
 
-@app.options("/{rest_of_path:path}")
+
+# Definir tus rutas y funciones de manejo aquí
+@app.options("/{rest_of_path:path}")  # Ruta de preflight OPTIONS
 async def preflight_check():
     return {"message": "This is a preflight response"}
 
-
-@app.get("/predict/")
+@app.post("/predict/")  # Ejemplo de ruta POST
 def predict(input_data: TextInput):
-    # Transformar los datos de entrada usando el vectorizador
-    transformed_data = vectorizer.transform([input_data.text])
-    # Realizar predicciones usando el modelo cargado
-    prediction = model.predict(transformed_data)
-    # Retornar la predicción como respuesta
-    return {"prediction": prediction.tolist()}
+    # Lógica de tu función predict aquí
+    return {"prediction": "dummy prediction"}
 
 """
 if __name__ == "__main__":
