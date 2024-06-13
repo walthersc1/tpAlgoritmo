@@ -39,20 +39,8 @@ def ga():
     return {"mapri"}
 
 @app.post("/predict/")
-async def predict(text: str):
-    try:
-        # Cargar el modelo y el vectorizador desde los archivos .pkl
-        model = joblib.load('model.pkl')
-        vectorizer = joblib.load('vectorizer.pkl')
+def predict(input_data: TextInput):
+    # Aquí deberías procesar input_data.text según tus necesidades
+    return {"message": f"Received text: {input_data.text}"}
 
-        # Transformar los datos de entrada usando el vectorizador
-        transformed_data = vectorizer.transform([text])
-        # Realizar predicciones usando el modelo cargado
-        prediction = model.predict(transformed_data)
-        # Retornar la predicción como respuesta
-    except Exception as e:
-        logger.error(f"Error during prediction: {e}")
-        raise HTTPException(status_code=500, detail="Error during prediction")
-	
-    return {prediction}
 
