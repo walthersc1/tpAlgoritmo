@@ -26,9 +26,6 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-# Definir el modelo de datos para la entrada
-class TextInput(BaseModel):
-    text: str
 
 @app.options("/{rest_of_path:path}")
 async def preflight_check():
@@ -38,7 +35,7 @@ async def preflight_check():
 def ga():
     return {"mapri"}
 
-@app.post("/predict/{text}")
+@app.post("/predict/")
 def predict(text: str):
     # Transformar los datos de entrada usando el vectorizador
     transformed_data = vectorizer.transform([text])
