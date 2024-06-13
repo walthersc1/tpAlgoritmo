@@ -18,13 +18,7 @@ origins = [
     # Añade otros orígenes permitidos aquí
 ]
 
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["*"],
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
+
 # Definir el modelo de datos para la entrada
 class TextInput(BaseModel):
     text: str
