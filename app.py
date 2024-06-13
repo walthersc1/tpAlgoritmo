@@ -45,7 +45,7 @@ class TextInput(BaseModel):
 
 
 @app.get("/predict/")
-def predict():
+def predict(text: str):
  
-    return {"ewqeqeqe"}
+    return {text}
 
