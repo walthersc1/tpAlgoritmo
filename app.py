@@ -3,6 +3,7 @@ from pydantic import BaseModel
 import joblib
 from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
+from fastapi.responses import PlainTextResponse
 
 # Cargar el modelo y el vectorizador desde los archivos .pkl
 model = joblib.load('model.pkl')
@@ -21,7 +22,7 @@ origins = [
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,
+    allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -39,12 +40,12 @@ async def preflight_check():
 def ga():
     return {"mapri"}
 
-@app.get("/predict/")
+@app.get("/predict/",response_class=PlainTextResponse)
 def predict(text: TextInput):
     # Transformar los datos de entrada usando el vectorizador
     transformed_data = vectorizer.transform([text])
     # Realizar predicciones usando el modelo cargado
     prediction = model.predict(transformed_data)
     # Retornar la predicción como respuesta
-    return {"prediction": prediction}
+    return {prediction}
 
