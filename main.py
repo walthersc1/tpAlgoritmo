@@ -13,17 +13,17 @@ app = FastAPI()
 
 # Configurar CORS
 origins = [
-    "http://localhost:3000",  # Origen de desarrollo local
-    "https://proyecto-eetmxget9-walthers-projects-76c0417b.vercel.app",  
-    "https://proyecto-eetmxget9-walthers-projects-76c0417b.vercel.app/Chatbot",
-    "https://proyecto-tp-chi.vercel.app",
-    "https://tpalgoritmo-production.up.railway.app",# Reemplaza con tu dominio de Vercel 
+    "http://localhost:3000/**",  # Origen de desarrollo local
+    "https://proyecto-eetmxget9-walthers-projects-76c0417b.vercel.app/",  
+    "https://proyecto-eetmxget9-walthers-projects-76c0417b.vercel.app/Chatbot/",
+    "https://proyecto-tp-chi.vercel.app/",
+    "https://tpalgoritmo-production.up.railway.app/",# Reemplaza con tu dominio de Vercel 
     # Añade otros orígenes permitidos aquí
 ]
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=origins,
     allow_credentials=True,
     allow_methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allow_headers=["*"],
