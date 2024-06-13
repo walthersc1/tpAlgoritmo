@@ -45,8 +45,4 @@ def predict(input_data: TextInput):
     # Realizar predicciones usando el modelo cargado
     prediction = model.predict(transformed_data)
     # Retornar la predicción como respuesta
-    return {"prediction": prediction.tolist()}
-
-
-if __name__ == "__main__":
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    return {"prediction": prediction}
