@@ -50,9 +50,9 @@ def predict(text: str):
     model = joblib.load('model.pkl')
     vectorizer = joblib.load('vectorizer.pkl')
     # Transformar los datos de entrada usando el vectorizador
-    transformed_data = vectorizer.transform([text])
+    transformed_data = vectorizer.transform(["Estoy bien no me siento mal"])
     # Realizar predicciones usando el modelo cargado
     prediction = model.predict(transformed_data)
     # Retornar la predicción como respuesta
-    return {text}
+    return {prediction}
 
