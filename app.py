@@ -13,7 +13,7 @@ app = FastAPI()
 
 # Configurar CORS
 origins = [
-    "http://localhost:3000",  # Origen de desarrollo local
+    "http://localhost:3000/**",  # Origen de desarrollo local
     "https://proyecto-6j9n8jmjo-walthersc11s-projects.vercel.app", 
     "https://tpalgoritmo-production.up.railway.app/mapri/", # Reemplaza con tu dominio de Vercel
     # Añade otros orígenes permitidos aquí
@@ -39,7 +39,7 @@ async def preflight_check():
 def ga():
     return {"mapri"}
 
-@app.post("/predict/")
+@app.get("/predict/")
 def predict(text: TextInput):
     # Transformar los datos de entrada usando el vectorizador
     transformed_data = vectorizer.transform([text])
