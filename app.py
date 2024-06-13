@@ -43,5 +43,5 @@ def ga():
 @app.post("/predict/")
 def predict(text: TextInput):
 
-    return {text}
+    return {"si entro"}
 
