@@ -46,3 +46,4 @@ def predict(text: str):
     prediction = model.predict(transformed_data)
     # Retornar la predicción como respuesta
     return {"prediction": prediction}
+
