@@ -32,7 +32,7 @@ app.add_middleware(
 class TextInput(BaseModel):
     text: str
 
-@app.post("/predict/")  # Ejemplo de ruta POST
+@app.get("/predict/")  # Ejemplo de ruta POST
 def predict(input_data: TextInput):
     # Lógica de tu función predict aquí
     return {"prediction": "dummy prediction"}
