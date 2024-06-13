@@ -40,7 +40,7 @@ async def preflight_check():
 def ga():
     return {"mapri"}
 
-@app.post("/predict/")
+@app.get("/predict/")
 def predict(text: TextInput):
 
     return {"si entro"}
