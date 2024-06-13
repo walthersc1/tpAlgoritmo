@@ -1,11 +1,12 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 import joblib
 from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
 from fastapi.responses import PlainTextResponse
+import logging
 
-
+logger = logging.getLogger(__name__)
 
 app = FastAPI()
 
@@ -39,18 +40,19 @@ def ga():
 
 @app.post("/predict/")
 async def predict(text: str):
+    try:
+        # Cargar el modelo y el vectorizador desde los archivos .pkl
+        model = joblib.load('model.pkl')
+        vectorizer = joblib.load('vectorizer.pkl')
 
-    # Cargar el modelo y el vectorizador desde los archivos .pkl
-    model = joblib.load('model.pkl')
-    vectorizer = joblib.load('vectorizer.pkl')
-
-
-    # Transformar los datos de entrada usando el vectorizador
-    transformed_data = vectorizer.transform([text])
-    # Realizar predicciones usando el modelo cargado
-    prediction = model.predict(transformed_data)
-    # Retornar la predicción como respuesta
-	
+        # Transformar los datos de entrada usando el vectorizador
+        transformed_data = vectorizer.transform([text])
+        # Realizar predicciones usando el modelo cargado
+        prediction = model.predict(transformed_data)
+        # Retornar la predicción como respuesta
+    except Exception as e:
+        logger.error(f"Error during prediction: {e}")
+        raise HTTPException(status_code=500, detail="Error during prediction")
 	
     return {prediction}
 
