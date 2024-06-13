@@ -41,7 +41,7 @@ def ga():
     return {"mapri"}
 
 @app.get("/predict/")
-def predict(text: str):
+async def predict(text: str):
     # Transformar los datos de entrada usando el vectorizador
     transformed_data = vectorizer.transform([text])
     # Realizar predicciones usando el modelo cargado
