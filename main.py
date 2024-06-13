@@ -14,13 +14,14 @@ app = FastAPI()
 # Configurar CORS
 origins = [
     "http://localhost:3000",  # Origen de desarrollo local
-    "https://proyecto-6j9n8jmjo-walthersc11s-projects.vercel.app",  # Reemplaza con tu dominio de Vercel
+    "https://proyecto-6j9n8jmjo-walthersc11s-projects.vercel.app", 
+    "https://tpalgoritmo-production.up.railway.app/mapri/", # Reemplaza con tu dominio de Vercel
     # Añade otros orígenes permitidos aquí
 ]
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["**"],
+    allow_origins=origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
