@@ -1,12 +1,14 @@
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI
 from pydantic import BaseModel
 import joblib
 from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
 from fastapi.responses import PlainTextResponse
-import logging
 
-logger = logging.getLogger(__name__)
+# Cargar el modelo y el vectorizador desde los archivos .pkl
+model = joblib.load('model.pkl')
+vectorizer = joblib.load('vectorizer.pkl')
+
 
 app = FastAPI()
 
@@ -39,8 +41,7 @@ def ga():
     return {"mapri"}
 
 @app.post("/predict/")
-def predict(input_data: str):
-    # Aquí deberías procesar input_data.text según tus necesidades
-    return {"message": f"Received text: {input_data.text}"}
+def predict(text: str):
 
+    return {text}
 
