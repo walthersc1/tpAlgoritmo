@@ -18,7 +18,13 @@ origins = [
     # Añade otros orígenes permitidos aquí
 ]
 
-
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["**"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 # Definir el modelo de datos para la entrada
 class TextInput(BaseModel):
     text: str
@@ -28,7 +34,7 @@ async def preflight_check():
     return {"message": "This is a preflight response"}
 
 @app.get("/mapri/")
-def ga ():
+def ga():
     return {"mapri"}
 
 @app.post("/predict/")
