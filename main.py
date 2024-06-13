@@ -39,10 +39,15 @@ class TextInput(BaseModel):
     text: str
 
 
+
 @app.get("/predict/")
-def predict(text: str = Query(...)):
-    # Aquí puedes procesar el texto recibido
-    return {"prediction": "dummy prediction"}
+def predict(input_data: TextInput):
+    # Transformar los datos de entrada usando el vectorizador
+    transformed_data = vectorizer.transform([input_data.text])
+    # Realizar predicciones usando el modelo cargado
+    prediction = model.predict(transformed_data)
+    # Retornar la predicción como respuesta
+    return {"prediction": prediction.tolist()}
 
 """
 
