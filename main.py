@@ -32,19 +32,19 @@ app.add_middleware(
 class TextInput(BaseModel):
     text: str
 
-
-
-# Definir tus rutas y funciones de manejo aquí
-@app.options("/{rest_of_path:path}")  # Ruta de preflight OPTIONS
-async def preflight_check():
-    return {"message": "This is a preflight response"}
-
 @app.post("/predict/")  # Ejemplo de ruta POST
 def predict(input_data: TextInput):
     # Lógica de tu función predict aquí
     return {"prediction": "dummy prediction"}
 
 """
+# Definir tus rutas y funciones de manejo aquí
+@app.options("/{rest_of_path:path}")  # Ruta de preflight OPTIONS
+async def preflight_check():
+    return {"message": "This is a preflight response"}
+
+
+
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=8000)
 """
