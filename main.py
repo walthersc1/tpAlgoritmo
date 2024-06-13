@@ -38,7 +38,9 @@ async def preflight_check():
 class TextInput(BaseModel):
     text: str
 
-
+@app.get("/mapri/")
+def mapri():
+    return print("Hola mundo")
 
 @app.get("/predict/")
 def predict(input_data: TextInput):
