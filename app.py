@@ -5,9 +5,6 @@ from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
 from fastapi.responses import PlainTextResponse
 
-# Cargar el modelo y el vectorizador desde los archivos .pkl
-model = joblib.load('model.pkl')
-vectorizer = joblib.load('vectorizer.pkl')
 
 
 app = FastAPI()
@@ -42,6 +39,12 @@ def ga():
 
 @app.get("/predict/")
 async def predict(text: str):
+
+    # Cargar el modelo y el vectorizador desde los archivos .pkl
+    model = joblib.load('model.pkl')
+    vectorizer = joblib.load('vectorizer.pkl')
+
+
     # Transformar los datos de entrada usando el vectorizador
     transformed_data = vectorizer.transform([text])
     # Realizar predicciones usando el modelo cargado
