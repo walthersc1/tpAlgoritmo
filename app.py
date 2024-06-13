@@ -38,10 +38,10 @@ async def preflight_check():
 def ga():
     return {"mapri"}
 
-@app.post("/predict/")
-def predict(input_data: TextInput):
+@app.post("/predict/{text}")
+def predict(text: str):
     # Transformar los datos de entrada usando el vectorizador
-    transformed_data = vectorizer.transform([input_data.text])
+    transformed_data = vectorizer.transform([text])
     # Realizar predicciones usando el modelo cargado
     prediction = model.predict(transformed_data)
     # Retornar la predicción como respuesta
