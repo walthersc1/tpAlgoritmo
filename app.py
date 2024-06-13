@@ -41,7 +41,7 @@ def ga():
     return {"mapri"}
 
 @app.post("/predict/")
-def predict(text: TextInput):
+def predict(text: str):
 
     return {text}
 
