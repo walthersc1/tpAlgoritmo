@@ -14,27 +14,30 @@ app = FastAPI()
 # Configurar CORS
 origins = [
     "http://localhost:3000",  # Origen de desarrollo local
-    "https://proyecto-eetmxget9-walthers-projects-76c0417b.vercel.app",  # Reemplaza con tu dominio de Vercel
+    "https://proyecto-eetmxget9-walthers-projects-76c0417b.vercel.app",  
+    "https://proyecto-eetmxget9-walthers-projects-76c0417b.vercel.app/Chatbot",
+    "https://proyecto-tp-chi.vercel.app",# Reemplaza con tu dominio de Vercel 
     # Añade otros orígenes permitidos aquí
 ]
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Permite acceso desde cualquier origen
+    allow_origins=origins,
     allow_credentials=True,
     allow_methods=["*"],
-    allow_headers=["*"]
+    allow_headers=["*"],
 )
 # Definir el modelo de datos para la entrada
 class TextInput(BaseModel):
     text: str
-"""
+
+
 @app.options("/{rest_of_path:path}")
 async def preflight_check():
     return {"message": "This is a preflight response"}
-"""
 
-@app.post("/predict/")
+
+@app.get("/predict/")
 def predict(input_data: TextInput):
     # Transformar los datos de entrada usando el vectorizador
     transformed_data = vectorizer.transform([input_data.text])
