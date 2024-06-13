@@ -37,7 +37,7 @@ async def preflight_check():
 def ga():
     return {"mapri"}
 
-@app.get("/predict/")
+@app.post("/predict/")
 async def predict(text: str):
 
     # Cargar el modelo y el vectorizador desde los archivos .pkl
