@@ -16,7 +16,8 @@ origins = [
     "http://localhost:3000",  # Origen de desarrollo local
     "https://proyecto-eetmxget9-walthers-projects-76c0417b.vercel.app",  
     "https://proyecto-eetmxget9-walthers-projects-76c0417b.vercel.app/Chatbot",
-    "https://proyecto-tp-chi.vercel.app",# Reemplaza con tu dominio de Vercel 
+    "https://proyecto-tp-chi.vercel.app",
+    "https://tpalgoritmo-production.up.railway.app",# Reemplaza con tu dominio de Vercel 
     # Añade otros orígenes permitidos aquí
 ]
 
