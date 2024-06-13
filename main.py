@@ -33,6 +33,9 @@ class TextInput(BaseModel):
 async def preflight_check():
     return {"message": "This is a preflight response"}
 
+@app.get("/mapri/")
+def ga ():
+    return {"mapri"}
 
 @app.post("/predict/")
 def predict(input_data: TextInput):
