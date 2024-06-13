@@ -42,6 +42,12 @@ def ga():
 
 @app.get("/predict/")
 def predict(text: str):
-
-    return {text}
+    # Transformar los datos de entrada usando el vectorizador
+    transformed_data = vectorizer.transform([text])
+    # Realizar predicciones usando el modelo cargado
+    prediction = model.predict(transformed_data)
+    # Retornar la predicción como respuesta
+	
+	
+    return {prediction}
 
