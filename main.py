@@ -29,10 +29,6 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Definir tus rutas y funciones de manejo aquí
-@app.options("/{rest_of_path:path}")  # Ruta de preflight OPTIONS
-async def preflight_check():
-    return {"message": "This is a preflight response"}
 
 # Definir el modelo de datos para la entrada
 class TextInput(BaseModel):
