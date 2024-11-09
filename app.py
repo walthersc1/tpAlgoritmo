@@ -85,4 +85,5 @@ async def predict(input_data: InputData, request: Request):
     prediction = model.predict(X_input)
 
     # Retornar la predicción como respuesta
-    return {"prediction": str(prediction[0])}
+    return {str(prediction)}
+
